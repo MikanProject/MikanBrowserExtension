@@ -1,0 +1,48 @@
+{
+  "name": "Mikan",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "__MSG_extDescription__",
+  "homepage_url": "http://mikanani.me",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "default_locale": "zh_CN",
+  "background": {
+    "scripts": [
+      "src/bg/background.js"
+    ],
+    "persistent": true
+  },
+  "options_page": "src/options_custom/index.html",
+  "permissions": [
+    "clipboardWrite",
+    "notifications",
+    "background",
+    "storage",
+    "http://*.mikanani.me/"
+  ],
+  "omnibox": {
+    "keyword": "mikan"
+  }/*,
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com/*"
+      ],
+      "css": [
+        "src/inject/inject.css"
+      ]
+    },
+    {
+      "matches": [
+        "https://www.google.com/*"
+      ],
+      "js": [
+        "src/inject/inject.js"
+      ]
+    }
+  ]*/
+}
