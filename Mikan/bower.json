@@ -1,0 +1,21 @@
+{
+  "name": "Mikan",
+  "homepage": "https://github.com/MikanProject/MikanBrowserExtension",
+  "authors": [
+    "arition <aritionkb@gmail.com>"
+  ],
+  "description": "Enhance your mikanani.me experience",
+  "main": "",
+  "license": "GPL-3.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.3"
+  }
+}

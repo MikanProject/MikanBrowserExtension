@@ -12,6 +12,7 @@
   "default_locale": "zh_CN",
   "background": {
     "scripts": [
+      "bower_components/jquery/dist/jquery.js",
       "src/bg/background.js"
     ],
     "persistent": true
@@ -22,27 +23,11 @@
     "notifications",
     "background",
     "storage",
-    "http://*.mikanani.me/"
+    "tabs",
+    "http://*.mikanani.me/",
+    "http://mikanani.me/"
   ],
   "omnibox": {
     "keyword": "mikan"
-  }/*,
-  "content_scripts": [
-    {
-      "matches": [
-        "https://www.google.com/*"
-      ],
-      "css": [
-        "src/inject/inject.css"
-      ]
-    },
-    {
-      "matches": [
-        "https://www.google.com/*"
-      ],
-      "js": [
-        "src/inject/inject.js"
-      ]
-    }
-  ]*/
+  }
 }
