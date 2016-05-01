@@ -18,15 +18,14 @@
     "persistent": true
   },
   "options_page": "src/options_custom/index.html",
-  "permissions": [
-    "clipboardWrite",
-    "notifications",
-    "background",
-    "storage",
-    "tabs",
-    "http://*.mikanani.me/",
-    "http://mikanani.me/"
-  ],
+    "permissions": [
+        //"clipboardWrite",
+        "notifications",
+        "background",
+        "tabs",
+        "http://*.mikanani.me/",
+        "http://mikanani.me/"
+    ],
   "omnibox": {
     "keyword": "mikan"
   }
