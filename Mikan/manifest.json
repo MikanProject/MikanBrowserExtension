@@ -17,7 +17,6 @@
     ],
     "persistent": true
   },
-  "options_page": "src/options_custom/index.html",
     "permissions": [
         //"clipboardWrite",
         "notifications",
@@ -25,8 +24,5 @@
         "tabs",
         "http://*.mikanani.me/",
         "http://mikanani.me/"
-    ],
-  "omnibox": {
-    "keyword": "mikan"
-  }
+    ]
 }
