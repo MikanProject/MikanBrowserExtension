@@ -1,4 +1,7 @@
 {
+    "gecko": {
+      "id": "mikan@mikanani.me"
+    },
     "background": {
         "scripts": [
             "bower_components/jquery/dist/jquery.js",
