@@ -1,7 +1,8 @@
 {
     "applications": {
         "gecko": {
-            "id": "mikan@mikanani.me"
+            "id": "mikan@mikanani.me",
+            "strict_min_version": "45.0",
         }
     },
     "background": {
