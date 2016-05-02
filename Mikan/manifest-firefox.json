@@ -32,7 +32,6 @@
     "name": "Mikan",
     "permissions": [
         "notifications",
-        "background",
         "tabs",
         "http://*.mikanani.me/",
         "http://mikanani.me/"
