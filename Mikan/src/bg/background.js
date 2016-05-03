@@ -99,4 +99,4 @@ function getUpdate() {
 }
 
 setupHash();
-setInterval(getUpdate, 60000);
+setInterval(getUpdate, 600000);
