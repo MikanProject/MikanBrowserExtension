@@ -18,6 +18,11 @@ const config = {
     filename: '_index.js',  //Name of output file
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production'),
+      },
+    }),
     //Minify the bundle
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -30,7 +35,7 @@ const config = {
     loaders: [
       {
         test: /(\.js$)|(\.jsx$)/,  //All .js files
-        loaders: ['babel-loader'], 
+        loaders: ['babel-loader'],
         exclude: [nodeModulesPath],
       },
     ],
