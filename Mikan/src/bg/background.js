@@ -65,7 +65,7 @@ function setupHash(forceRefresh) {
 function getUpdate() {
     if (localStorage.getItem("loginStatus") === "logout") return;
     $.ajax({
-        url: "http://api.mikanani.me/api/Mention/8",
+        url: "http://api.mikanani.me/api/Mention?count=10",
         dataType: "json",
         type: "GET",
         success: function (data) {

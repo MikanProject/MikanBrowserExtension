@@ -5,8 +5,10 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { teal500 } from 'material-ui/styles/colors';
 import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
 import UpdateCardList from './UpdateCardList';
 import InfoSnackbar from './InfoSnackbar';
+import Refresh from 'material-ui/svg-icons/navigation/refresh';
 
 //Needed for onTouchTap
 //Can go away when react 1.0 release
@@ -21,15 +23,13 @@ const muiTheme = getMuiTheme({
     },
 });
 
-console.log("pos");
-
 const Main = () => (
     <MuiThemeProvider muiTheme={muiTheme}>
         <div>
             <AppBar title="最近更新"
                 showMenuIconButton={false}
-                titleStyle={{ height: "50px", lineHeight: "50px", fontSize: "18px" }}
-                style={{ position: "fixed", top: 0 }} />
+                style={{ position: "fixed", top: 0 }}
+                iconElementRight={<IconButton><Refresh /></IconButton>} />
             <div className="content">
                 <UpdateCardList mentionDatas={JSON.parse(localStorage.getItem("mentionDatas")) } />
             </div>
