@@ -69,7 +69,7 @@ function getUpdate() {
         dataType: "json",
         type: "GET",
         success: function (data) {
-            localStorage.setItem = localStorage.setItem("mentionDatas", JSON.stringify(data));
+            localStorage.setItem("mentionDatas", JSON.stringify(data));
             let lastEpisodeId = localStorage.getItem("lastEpisodeId");
             if (lastEpisodeId == null || "" + data[0].EpisodeId !== lastEpisodeId) {
                 window.msg = data[0];

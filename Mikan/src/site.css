@@ -14,3 +14,37 @@ html [type="button"],
 [type="submit"] {
   -webkit-appearance: none; 
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #a0a0a0;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8c8c8c;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #787878;
+}
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #e6e6e6;
+}
+::-webkit-scrollbar-track:active {
+  background: #c8c8c8;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
