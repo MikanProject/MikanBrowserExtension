@@ -1,7 +1,7 @@
 {
     "background": {
         "scripts": [
-            "bower_components/jquery/dist/jquery.js",
+            "lib/jquery/jquery.js",
             "src/bg/background.js"
         ],
         "persistent": true
@@ -10,7 +10,7 @@
         {
             "matches": [ "http://mikanani.me/*" ],
             "js": [
-                "bower_components/jquery/dist/jquery.js",
+                "lib/jquery/jquery.js",
                 "src/inject/inject.js"
             ]
         }
