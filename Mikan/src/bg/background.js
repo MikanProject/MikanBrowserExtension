@@ -3,14 +3,23 @@
 
 if (!String.prototype.format) {
     String.prototype.format = function () {
-        var args = arguments;
+        let args = arguments;
         return this.replace(/{(\d+)}/g, function (match, number) {
             return typeof args[number] != 'undefined'
-              ? args[number]
-              : match
-            ;
+                ? args[number]
+                : match
+                ;
         });
     };
+}
+
+function openWindow(targetUrl) {
+    chrome.tabs.create({
+        url: targetUrl,
+    },
+        function (tabInfo) {
+            chrome.windows.update(tabInfo.windowId, { focused: true });
+        });
 }
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
@@ -22,25 +31,17 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             localStorage.setItem("loginStatus", "logout");
             localStorage.setItem("hash", null);
         }
+    } else if (request.type === "openWindow") {
+        openWindow(request.targetUrl);
     }
 });
 
 chrome.notifications.onClicked.addListener(function () {
-    chrome.tabs.create({
-            url: "http://mikanani.me/Home/Bangumi/" + window.msg.BangumiId + "#" + window.msg.SubtitleGroupId
-        },
-        function(tabInfo) {
-            chrome.windows.update(tabInfo.windowId, { focused: true });
-        });
+    openWindow("http://mikanani.me/Home/Bangumi/" + window.msg.BangumiId + "#" + window.msg.SubtitleGroupId);
 });
 
-chrome.notifications.onButtonClicked.addListener(function() {
-    chrome.tabs.create({
-            url: "magnet:?xt=urn:btih:" + window.msg.MagnetLink
-        },
-        function(tabInfo) {
-            chrome.windows.update(tabInfo.windowId, { focused: true });
-        });
+chrome.notifications.onButtonClicked.addListener(function () {
+    openWindow("magnet:?xt=urn:btih:" + window.msg.MagnetLink);
 });
 
 function setupHash(forceRefresh) {
@@ -49,54 +50,56 @@ function setupHash(forceRefresh) {
             url: "http://mikanani.me/Account/ApiLogin",
             dataType: "json",
             type: "GET",
-            success: function(data) {
+            success: function (data) {
                 localStorage.setItem("hash", data.Message);
-            }
+            },
         });
     }
     $.ajaxSetup({
         headers: {
             "Authorization": "MikanHash " + localStorage.getItem("hash")
-        }
+        },
     });
 }
 
 function getUpdate() {
     if (localStorage.getItem("loginStatus") === "logout") return;
     $.ajax({
-        url: "http://api.mikanani.me/api/Mention",
+        url: "http://api.mikanani.me/api/Mention/8",
         dataType: "json",
         type: "GET",
-        success: function(data) {
-            var lastEpisodeId = localStorage.getItem("lastEpisodeId");
+        success: function (data) {
+            localStorage.setItem = localStorage.setItem("mentionDatas", JSON.stringify(data));
+            let lastEpisodeId = localStorage.getItem("lastEpisodeId");
             if (lastEpisodeId == null || "" + data[0].EpisodeId !== lastEpisodeId) {
                 window.msg = data[0];
                 chrome.notifications.create("MikanUpdate",
-                {
-                    type: "basic",
-                    title: chrome.i18n.getMessage("updateNotificationTitle"),
-                    message: chrome.i18n.getMessage("updateNotificationMessage")
-                        .format(data[0].SubtitleGroupName, data[0].BangumiName, data[0].Name),
-                    iconUrl: "http://mikanani.me" + data[0].Cover,
-                    buttons: [
-                        {
-                            title: chrome.i18n.getMessage("updateNotificationButtonDownload"),
-                            iconUrl: "icons/ic_file_download_black_24dp_2x.png"
-                        } /*,
+                    {
+                        type: "basic",
+                        title: chrome.i18n.getMessage("updateNotificationTitle"),
+                        message: chrome.i18n.getMessage("updateNotificationMessage")
+                            .format(data[0].SubtitleGroupName, data[0].BangumiName, data[0].Name),
+                        iconUrl: "http://mikanani.me" + data[0].Cover,
+                        buttons: [
+                            {
+                                title: chrome.i18n.getMessage("updateNotificationButtonDownload"),
+                                iconUrl: "icons/ic_file_download_black_24dp_2x.png",
+                            }, /*,
                             {
                                 title: chrome.i18n.getMessage("updateNotificationButtonCopy"),
-                                iconUrl: "icons/ic_content_copy_black_24dp_2x.png"
+                                iconUrl: "icons/ic_content_copy_black_24dp_2x.png",
                             }*/
-                    ]
-                });
+                        ],
+                    });
                 localStorage.setItem("lastEpisodeId", "" + data[0].EpisodeId);
             }
         },
-        error: function() {
+        error: function () {
             setupHash(true);
-        }
+        },
     });
 }
 
 setupHash();
+getUpdate();
 setInterval(getUpdate, 600000);

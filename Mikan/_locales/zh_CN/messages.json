@@ -14,5 +14,17 @@
     },
     "updateNotificationButtonCopy": {
         "message": "复制磁链"
+    },
+    "updateNotificationButtonOpen": {
+        "message": "打开介绍页"
+    },
+    "errorNotLogin": {
+        "message": "请先登录"
+    },
+    "copySuccess": {
+        "message": "复制成功"
+    },
+    "copyFailed": {
+        "message": "复制失败"
     }
 }

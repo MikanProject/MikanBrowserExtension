@@ -4,8 +4,9 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { teal500 } from 'material-ui/styles/colors';
-import FlatButton from 'material-ui/FlatButton';
-
+import AppBar from 'material-ui/AppBar';
+import UpdateCardList from './UpdateCardList';
+import InfoSnackbar from './InfoSnackbar';
 
 //Needed for onTouchTap
 //Can go away when react 1.0 release
@@ -20,10 +21,19 @@ const muiTheme = getMuiTheme({
     },
 });
 
+console.log("pos");
+
 const Main = () => (
     <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-            <FlatButton label="test" />
+            <AppBar title="最近更新"
+                showMenuIconButton={false}
+                titleStyle={{ height: "50px", lineHeight: "50px", fontSize: "18px" }}
+                style={{ position: "fixed", top: 0 }} />
+            <div className="content">
+                <UpdateCardList mentionDatas={JSON.parse(localStorage.getItem("mentionDatas")) } />
+            </div>
+            <InfoSnackbar ref={(c) => window.InfoSnackbar = c} />
         </div>
     </MuiThemeProvider>
 );
@@ -32,3 +42,18 @@ ReactDOM.render(
     <Main />,
     document.getElementById("content")
 );
+
+let clipboard = new Clipboard('.clipBtn');
+clipboard.on('success', function (e) {
+    window.InfoSnackbar.setState({
+        open: true,
+        message: chrome.i18n.getMessage("copySuccess"),
+    });
+});
+
+clipboard.on('error', function (e) {
+    window.InfoSnackbar.setState({
+        open: true,
+        message: chrome.i18n.getMessage("copyFailed"),
+    });
+});

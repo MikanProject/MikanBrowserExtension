@@ -14,5 +14,17 @@
     },
     "updateNotificationButtonCopy": {
         "message": "Copy Magnet Link"
+    },
+    "updateNotificationButtonOpen": {
+        "message": "Open Description Page"
+    },
+    "errorNotLogin": {
+        "message": "Please Login first."
+    },
+    "copySuccess": {
+        "message": "Copy success"
+    },
+    "copyFailed": {
+        "message": "Copy failed"
     }
 }

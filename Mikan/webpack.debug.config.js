@@ -13,7 +13,6 @@ const config = {
     extensions: ["", ".js", ".jsx"],
     //node_modules: ["web_modules", "node_modules"]  (Default Settings)
   },
-  devtool: 'eval',
   output: {
     path: buildPath,    //Path of output file
     filename: '_index.js',

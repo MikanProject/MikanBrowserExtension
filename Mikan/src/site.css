@@ -1,4 +1,16 @@
 ﻿body {
   font-family: 'Noto Sans', 'Noto Sans SC', 'Noto Sans JP', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 400; }
+  font-weight: 400; 
+  width: 350px;
+}
 
+.content {
+  margin-top: 60px;
+}
+
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: none; 
+}
