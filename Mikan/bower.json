@@ -1,8 +1,8 @@
 {
-  "name": "Mikan",
+  "name": "mikan",
   "homepage": "https://github.com/MikanProject/MikanBrowserExtension",
   "authors": [
-    "arition <aritionkb@gmail.com>"
+    "mikan_project <admin@mikanani.me>"
   ],
   "description": "Enhance your mikanani.me experience",
   "main": "",
@@ -16,6 +16,6 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "^2.2.3"
+    "jquery": "^2.2.4"
   }
 }
