@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --progress --colors",
-    "lint": "eslint src && echo \"eslint: no lint errors\"",
+    "lint": "eslint src && echo \"eslint: no lint errors\""
   },
   "author": "mikan_project <admin@mikanani.me>",
   "license": "GPL-3.0",
