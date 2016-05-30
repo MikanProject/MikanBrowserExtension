@@ -26,5 +26,11 @@
     },
     "copyFailed": {
         "message": "复制失败"
+    },
+    "refreshSuccess": {
+        "message": "刷新成功"
+    },
+    "refreshFailed": {
+        "message": "刷新失败"
     }
 }

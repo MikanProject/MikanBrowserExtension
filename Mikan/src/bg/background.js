@@ -33,6 +33,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         }
     } else if (request.type === "openWindow") {
         openWindow(request.targetUrl);
+    } else if (request.type === "refresh") {
+        getUpdate(sendResponse);
+        return true;
     }
 });
 
@@ -62,8 +65,10 @@ function setupHash(forceRefresh) {
     });
 }
 
-function getUpdate() {
-    if (localStorage.getItem("loginStatus") === "logout") return;
+function getUpdate(sendResponse) {
+    if (localStorage.getItem("loginStatus") === "logout") {
+        if(sendResponse instanceof Function) sendResponse({ status: "logout" });
+    }
     $.ajax({
         url: "http://api.mikanani.me/api/Mention?count=10",
         dataType: "json",
@@ -93,9 +98,11 @@ function getUpdate() {
                     });
                 localStorage.setItem("lastEpisodeId", "" + data[0].EpisodeId);
             }
+            if(sendResponse instanceof Function) sendResponse({ status: "success" });
         },
-        error: function () {
+        error: function (jqXHR, textStatus, errorThrown) {
             setupHash(true);
+            if(sendResponse instanceof Function) sendResponse({ status: "error", errorThrown: errorThrown, data: jqXHR.responseText });
         },
     });
 }

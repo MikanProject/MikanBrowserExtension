@@ -26,5 +26,11 @@
     },
     "copyFailed": {
         "message": "Copy failed"
+    },
+    "refreshSuccess": {
+        "message": "Refresh Success"
+    },
+    "refreshFailed": {
+        "message": "Refresh Failed"
     }
 }
