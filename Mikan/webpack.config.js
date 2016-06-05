@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const buildPath = path.resolve(__dirname, 'src');
+const buildPath = path.resolve(__dirname, 'dist/src');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 
 const config = {
