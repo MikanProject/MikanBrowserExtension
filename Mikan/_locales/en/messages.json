@@ -21,6 +21,9 @@
     "errorNotLogin": {
         "message": "Please Login first."
     },
+    "errorNoData": {
+        "message": "Cannot get data, try refresh."
+    },
     "copySuccess": {
         "message": "Copy success"
     },

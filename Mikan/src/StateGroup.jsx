@@ -4,13 +4,23 @@ import IconButton from 'material-ui/IconButton';
 import UpdateCardList from './UpdateCardList';
 import Refresh from 'material-ui/svg-icons/navigation/refresh';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
+import {Card, CardText} from 'material-ui/Card';
 
 class StateGroup extends Component {
     constructor(props) {
         super(props);
+        let mentionDatas = [];
+        let dataValid = false;
+        try {
+            mentionDatas = JSON.parse(localStorage.getItem("mentionDatas"));
+            if (localStorage.getItem("loginStatus") === "login" && mentionDatas.length > 0) dataValid = true;
+        } catch (err) {
+            localStorage.setItem("mentionDatas", "[]");
+        }
         this.state = {
             showRefreshIndicator: false,
-            mentionDatas: JSON.parse(localStorage.getItem("mentionDatas")),
+            mentionDatas: mentionDatas,
+            dataValid: dataValid,
         }
     }
 
@@ -23,6 +33,21 @@ class StateGroup extends Component {
     }
 
     render() {
+        let cards;
+        if (this.state.dataValid) {
+            cards =
+                <UpdateCardList mentionDatas={ this.state.mentionDatas } />
+        } else {
+            let message;
+            if (localStorage.getItem("loginStatus") === "login") message = chrome.i18n.getMessage("errorNoData");
+            else message = chrome.i18n.getMessage("errorNotLogin");
+            cards =
+                <Card key={0} style={{ margin: "10px" }}>
+                    <CardText>
+                        {message}
+                    </CardText>
+                </Card>
+        }
         return (
             <div>
                 <AppBar
@@ -33,28 +58,31 @@ class StateGroup extends Component {
                         this.setState({ showRefreshIndicator: true })
                         chrome.runtime.sendMessage({ type: "refresh" },
                             (response) => {
+                                let dataValid = false;
                                 if (response.status === "success") {
                                     window.InfoSnackbar.setState({
                                         open: true,
                                         message: chrome.i18n.getMessage("refreshSuccess"),
-                                    })
+                                    });
+                                    dataValid = true;
                                 } else {
                                     window.InfoSnackbar.setState({
                                         open: true,
                                         message: chrome.i18n.getMessage("refreshFailed") + ", " + response.errorThrown,
-                                    })
+                                    });
                                 }
                                 this.setState({
                                     showRefreshIndicator: false,
                                     mentionDatas: JSON.parse(localStorage.getItem("mentionDatas")),
+                                    dataValid: dataValid,
                                 });
                             }
                         );
                     } }><Refresh /></IconButton>}
                     />
-                <RefreshIndicator size={36} left={163} top={100} status={this.getIndicatorStyle() } />
+                <RefreshIndicator size={36} left={163} top={100} status={ this.getIndicatorStyle() } />
                 <div className="content">
-                    <UpdateCardList mentionDatas={this.state.mentionDatas } />
+                    {cards}
                 </div>
             </div>
         );
