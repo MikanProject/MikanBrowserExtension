@@ -4,6 +4,14 @@
   width: 350px;
 }
 
+@-moz-document url-prefix() {
+  body {
+    width: auto;
+    min-width: 350px;
+    max-width: 370px;
+  }
+}
+
 .content {
   margin-top: 74px;
 }
