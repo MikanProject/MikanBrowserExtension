@@ -29710,6 +29710,10 @@
 
 	var _UpdateCardList2 = _interopRequireDefault(_UpdateCardList);
 
+	var _ErrorCardList = __webpack_require__(353);
+
+	var _ErrorCardList2 = _interopRequireDefault(_ErrorCardList);
+
 	var _refresh = __webpack_require__(340);
 
 	var _refresh2 = _interopRequireDefault(_refresh);
@@ -29717,8 +29721,6 @@
 	var _RefreshIndicator = __webpack_require__(341);
 
 	var _RefreshIndicator2 = _interopRequireDefault(_RefreshIndicator);
-
-	var _Card = __webpack_require__(315);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29770,17 +29772,7 @@
 	            if (this.state.dataValid) {
 	                cards = _react2.default.createElement(_UpdateCardList2.default, { mentionDatas: this.state.mentionDatas });
 	            } else {
-	                var message = void 0;
-	                if (localStorage.getItem("loginStatus") === "login") message = chrome.i18n.getMessage("errorNoData");else message = chrome.i18n.getMessage("errorNotLogin");
-	                cards = _react2.default.createElement(
-	                    _Card.Card,
-	                    { key: 0, style: { margin: "10px" } },
-	                    _react2.default.createElement(
-	                        _Card.CardText,
-	                        null,
-	                        message
-	                    )
-	                );
+	                cards = _react2.default.createElement(_ErrorCardList2.default, null);
 	            }
 	            return _react2.default.createElement(
 	                'div',
@@ -38421,6 +38413,62 @@
 	  muiTheme: _react.PropTypes.object.isRequired
 	};
 	exports.default = FlatButtonLabel;
+
+/***/ },
+/* 353 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Card = __webpack_require__(315);
+
+	var _FlatButton = __webpack_require__(350);
+
+	var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ErrorCardList = function ErrorCardList() {
+	    var message = void 0;
+	    var cardActions = void 0;
+	    if (localStorage.getItem("loginStatus") === "login") message = chrome.i18n.getMessage("errorNoData");else {
+	        message = chrome.i18n.getMessage("errorNotLogin");
+	        cardActions = _react2.default.createElement(
+	            _Card.CardActions,
+	            null,
+	            _react2.default.createElement(_FlatButton2.default, {
+	                primary: true,
+	                label: chrome.i18n.getMessage("errorNotLoginButtonLogin"),
+	                onTouchTap: function onTouchTap() {
+	                    return chrome.runtime.sendMessage({ type: "openWindow", targetUrl: "http://mikanani.me/Account/Login" });
+	                }
+	            })
+	        );
+	    }
+	    return _react2.default.createElement(
+	        _Card.Card,
+	        { key: 0, style: { margin: "10px" } },
+	        _react2.default.createElement(_Card.CardTitle, {
+	            title: chrome.i18n.getMessage("error")
+	        }),
+	        _react2.default.createElement(
+	            _Card.CardText,
+	            null,
+	            message
+	        ),
+	        cardActions
+	    );
+	};
+
+	exports.default = ErrorCardList;
 
 /***/ }
 /******/ ]);

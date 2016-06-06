@@ -18,8 +18,14 @@
     "updateNotificationButtonOpen": {
         "message": "打开介绍页"
     },
+    "error": {
+        "message": "发生错误"
+    },
     "errorNotLogin": {
         "message": "请先登录"
+    },
+    "errorNotLoginButtonLogin": {
+        "message": "登录"
     },
     "errorNoData": {
         "message": "暂时没有数据，请尝试刷新"

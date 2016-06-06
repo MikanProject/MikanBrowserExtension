@@ -18,8 +18,14 @@
     "updateNotificationButtonOpen": {
         "message": "Open Description Page"
     },
+    "error": {
+        "message": "Error"
+    },
     "errorNotLogin": {
         "message": "Please Login first."
+    },
+    "errorNotLoginButtonLogin": {
+        "message": "Login"
     },
     "errorNoData": {
         "message": "Cannot get data, try refresh."

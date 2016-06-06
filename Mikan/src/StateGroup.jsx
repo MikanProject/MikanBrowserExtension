@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import UpdateCardList from './UpdateCardList';
+import ErrorCardList from './ErrorCardList';
 import Refresh from 'material-ui/svg-icons/navigation/refresh';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
-import {Card, CardText} from 'material-ui/Card';
 
 class StateGroup extends Component {
     constructor(props) {
@@ -38,15 +38,8 @@ class StateGroup extends Component {
             cards =
                 <UpdateCardList mentionDatas={ this.state.mentionDatas } />
         } else {
-            let message;
-            if (localStorage.getItem("loginStatus") === "login") message = chrome.i18n.getMessage("errorNoData");
-            else message = chrome.i18n.getMessage("errorNotLogin");
             cards =
-                <Card key={0} style={{ margin: "10px" }}>
-                    <CardText>
-                        {message}
-                    </CardText>
-                </Card>
+                <ErrorCardList />
         }
         return (
             <div>
