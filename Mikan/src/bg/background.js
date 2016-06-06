@@ -55,6 +55,11 @@ function setupHash(forceRefresh) {
             type: "GET",
             success: function (data) {
                 localStorage.setItem("hash", data.Message);
+                $.ajaxSetup({
+                    headers: {
+                        "Authorization": "MikanHash " + localStorage.getItem("hash")
+                    },
+                });
             },
         });
     }
@@ -67,7 +72,7 @@ function setupHash(forceRefresh) {
 
 function getUpdate(sendResponse) {
     if (localStorage.getItem("loginStatus") === "logout") {
-        if(sendResponse instanceof Function) sendResponse({ status: "logout" });
+        if (sendResponse instanceof Function) sendResponse({ status: "logout" });
     }
     $.ajax({
         url: "http://api.mikanani.me/api/Mention?count=10",
@@ -98,11 +103,11 @@ function getUpdate(sendResponse) {
                     });
                 localStorage.setItem("lastEpisodeId", "" + data[0].EpisodeId);
             }
-            if(sendResponse instanceof Function) sendResponse({ status: "success" });
+            if (sendResponse instanceof Function) sendResponse({ status: "success" });
         },
         error: function (jqXHR, textStatus, errorThrown) {
             setupHash(true);
-            if(sendResponse instanceof Function) sendResponse({ status: "error", errorThrown: errorThrown, data: jqXHR.responseText });
+            if (sendResponse instanceof Function) sendResponse({ status: "error", errorThrown: errorThrown, data: jqXHR.responseText });
         },
     });
 }
