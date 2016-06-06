@@ -3,4 +3,4 @@ bower_components
 node_modules
 dist
 mainfest.json
-*.map
+_index.js
