@@ -57,7 +57,7 @@ function setupHash(forceRefresh) {
                 localStorage.setItem("hash", data.Message);
                 $.ajaxSetup({
                     headers: {
-                        "Authorization": "MikanHash " + localStorage.getItem("hash")
+                        "Authorization": "MikanHash " + localStorage.getItem("hash"),
                     },
                 });
             },
@@ -65,7 +65,7 @@ function setupHash(forceRefresh) {
     }
     $.ajaxSetup({
         headers: {
-            "Authorization": "MikanHash " + localStorage.getItem("hash")
+            "Authorization": "MikanHash " + localStorage.getItem("hash"),
         },
     });
 }
