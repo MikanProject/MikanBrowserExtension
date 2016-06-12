@@ -40,11 +40,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 });
 
 chrome.notifications.onClicked.addListener(function () {
-    openWindow("http://mikanani.me/Home/Bangumi/" + window.msg.BangumiId + "#" + window.msg.SubtitleGroupId);
+    openWindow("http://mikanani.me/Home/Episode/" + window.msg.MagnetLink);
 });
 
-chrome.notifications.onButtonClicked.addListener(function () {
-    openWindow("magnet:?xt=urn:btih:" + window.msg.MagnetLink);
+chrome.notifications.onButtonClicked.addListener(function (notificationId, buttonIndex) {
+    if (buttonIndex === 0) {
+        openWindow("magnet:?xt=urn:btih:" + window.msg.MagnetLink);
+    } else {
+        openWindow("http://dl.mikanani.me/file/" + new Date(window.msg.PublishDate).getFullYear().toString() + ("0" + (new Date(window.msg.PublishDate).getMonth() + 1)).slice(-2) + ("0" + new Date(window.msg.PublishDate).getDate()).slice(-2) + "/?" + window.msg.MagnetLink + ".torrent");
+    }
 });
 
 function setupHash(forceRefresh) {
@@ -94,11 +98,11 @@ function getUpdate(sendResponse) {
                             {
                                 title: chrome.i18n.getMessage("updateNotificationButtonDownload"),
                                 iconUrl: "icons/ic_file_download_black_24dp_2x.png",
-                            }, /*,
+                            },
                             {
-                                title: chrome.i18n.getMessage("updateNotificationButtonCopy"),
-                                iconUrl: "icons/ic_content_copy_black_24dp_2x.png",
-                            }*/
+                                title: chrome.i18n.getMessage("updateNotificationButtonDownloadTorrent"),
+                                iconUrl: "icons/ic_file_download_black_24dp_2x.png",
+                            },
                         ],
                     });
                 localStorage.setItem("lastEpisodeId", "" + data[0].EpisodeId);

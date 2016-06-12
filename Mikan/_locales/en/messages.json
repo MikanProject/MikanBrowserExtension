@@ -12,6 +12,9 @@
     "updateNotificationButtonDownload": {
         "message": "Download"
     },
+    "updateNotificationButtonDownloadTorrent": {
+        "message": "Download Torrent"
+    },
     "updateNotificationButtonCopy": {
         "message": "Copy Magnet Link"
     },

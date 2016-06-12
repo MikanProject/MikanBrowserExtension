@@ -12,6 +12,9 @@
     "updateNotificationButtonDownload": {
         "message": "下载"
     },
+    "updateNotificationButtonDownloadTorrent": {
+        "message": "下载种子"
+    },
     "updateNotificationButtonCopy": {
         "message": "复制磁链"
     },

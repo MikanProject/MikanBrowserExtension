@@ -6,6 +6,7 @@ import ContentCopy from 'material-ui/svg-icons/content/content-copy';
 import OpenInNew from 'material-ui/svg-icons/action/open-in-new';
 
 const UpdateCardList = props => {
+    console.log(props.mentionDatas[0].PublishDate);
     let dataNodes = props.mentionDatas.map(mentionData => (
         <Card key={mentionData.EpisodeId} style={{ margin: "10px" }}>
             <CardMedia
@@ -27,6 +28,16 @@ const UpdateCardList = props => {
                         ) } />
                     <ListItem
                         innerDivStyle={{ paddingTop: "12px", paddingBottom: "12px" }}
+                        primaryText={chrome.i18n.getMessage("updateNotificationButtonDownloadTorrent") }
+                        leftIcon={<FileDownload style={{ marginTop: "8px", marginBottom: "8px" }} />}
+                        onTouchTap={(event) => chrome.runtime.sendMessage(
+                            {
+                                type: "openWindow",
+                                targetUrl: "http://dl.mikanani.me/file/" + new Date(mentionData.PublishDate).getFullYear().toString() + ("0" + (new Date(mentionData.PublishDate).getMonth() + 1)).slice(-2) + ("0" + new Date(mentionData.PublishDate).getDate()).slice(-2) + "/?" + mentionData.MagnetLink + ".torrent",
+                            }
+                        ) } />
+                    <ListItem
+                        innerDivStyle={{ paddingTop: "12px", paddingBottom: "12px" }}
                         primaryText={chrome.i18n.getMessage("updateNotificationButtonCopy") }
                         leftIcon={<ContentCopy style={{ marginTop: "8px", marginBottom: "8px" }} />}
                         data-clipboard-text={"magnet:?xt=urn:btih:" + mentionData.MagnetLink}
@@ -38,7 +49,7 @@ const UpdateCardList = props => {
                         onTouchTap={(event) => chrome.runtime.sendMessage(
                             {
                                 type: "openWindow",
-                                targetUrl: "http://mikanani.me/Home/Bangumi/" + mentionData.BangumiId + "#" + mentionData.SubtitleGroupId,
+                                targetUrl: "http://mikanani.me/Home/Episode/" + mentionData.MagnetLink,
                             }
                         ) } />
                 </List>
