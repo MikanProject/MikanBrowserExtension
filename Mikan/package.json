@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build:debug": "webpack --config webpack.debug.config.js --progress --colors --watch",
-    "build": "webpack --progress --colors",
+    "build": "webpack --config webpack.release.config.js --progress --colors",
+    "build:firefox": "webpack --config webpack.release.firefox.config.js --progress --colors",
     "lint": "eslint src && echo \"eslint: no lint errors\""
   },
   "author": "mikan_project <admin@mikanani.me>",
