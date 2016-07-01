@@ -45,7 +45,8 @@
         "notifications",
         "tabs",
         "http://*.mikanani.me/",
-        "http://mikanani.me/"
+        "http://mikanani.me/",
+        "https://cdn.mmtrix.com/"
     ],
     "version": "0.0.4.2"
 }
