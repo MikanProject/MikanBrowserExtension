@@ -6,7 +6,6 @@ import ContentCopy from 'material-ui/svg-icons/content/content-copy';
 import OpenInNew from 'material-ui/svg-icons/action/open-in-new';
 
 const UpdateCardList = props => {
-    console.log(props.mentionDatas[0].PublishDate);
     let dataNodes = props.mentionDatas.map(mentionData => (
         <Card key={mentionData.EpisodeId} style={{ margin: "10px" }}>
             <CardMedia
