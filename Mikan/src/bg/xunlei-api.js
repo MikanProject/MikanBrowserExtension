@@ -92,54 +92,75 @@ let XunleiApi = (function () {
             }
         });
     }
+    function grantXunleiAccess(callback) {
+        chrome.permissions.contains({
+            permissions: ["cookies"],
+            origins: ["http://dynamic.cloud.vip.xunlei.com/"],
+        }, function (result) {
+            if (!result) {
+                chrome.permissions.request({
+                    permissions: ["cookies"],
+                    origins: ["http://dynamic.cloud.vip.xunlei.com/"],
+                }, function (granted) {
+                    if (granted) {
+                        callback();
+                    }
+                });
+            } else {
+                callback();
+            }
+        });
+    }
 
     return {
         AddBTTask: function (url, callback) {
             //requestChangeReferer();
-            $.ajax({
-                url: BTTaskCheckUrl.format(url, _random(), _now()),
-                type: "GET",
-                success: function (data) {
-                    //queryUrl(flag,infohash,fsize,bt_title,is_full,subtitle,subformatsize,size_list,valid_list,file_icon,findex,random)
-                    if (!data.match(/^queryUrl\(/)) callback({ status: false, message: "notLogin" });
-                    data = JSON.parse(data.replace(/^queryUrl\(/, "[")
-                        .replace(/\)$/, "]").replace(/new Array\('/g, "['")
-                        .replace(/'\)/g, "']").replace(/'/g, "\""));
-                    if (data[0] === 0) callback({ status: false, message: "noMagnet" });
-                    let postData = {
-                        cid: data[1],
-                        goldbean: 0,
-                        silverbean: 0,
-                        tsize: data[2],
-                        findex: data[10].join("_"),
-                        size: data[7].join("_"),
-                        btname: data[3],
-                        o_taskid: 0,
-                        o_page: "task",
-                        class_id: 0,
-                        from: 0,
-                    };
-                    getUid(function (value) {
-                        if (value) {
-                            postData.uid = value;
-                            console.log(postData);
-                            $.ajax({
-                                type: "POST",
-                                url: BTTaskCommitUrl,
-                                data: postData,
-                                success: function (commitData) {
-                                    if (commitData.match(/jsonp1234567890/)) {
-                                        callback({ status: true });
-                                    } else {
-                                        callback({ status: false, message: "unknownError" });
-                                    }
-                                },
-                            });
-                        } else {
-                            callback({ status: false, message: "notLogin" });
-                        }
-                    });
-                },
+            grantXunleiAccess(function () {
+                $.ajax({
+                    url: BTTaskCheckUrl.format(url, _random(), _now()),
+                    type: "GET",
+                    success: function (data) {
+                        //queryUrl(flag,infohash,fsize,bt_title,is_full,subtitle,subformatsize,size_list,valid_list,file_icon,findex,random)
+                        if (!data.match(/^queryUrl\(/)) callback({ status: false, message: "notLogin" });
+                        data = JSON.parse(data.replace(/^queryUrl\(/, "[")
+                            .replace(/\)$/, "]").replace(/new Array\('/g, "['")
+                            .replace(/'\)/g, "']").replace(/'/g, "\""));
+                        if (data[0] === 0) callback({ status: false, message: "noMagnet" });
+                        let postData = {
+                            cid: data[1],
+                            goldbean: 0,
+                            silverbean: 0,
+                            tsize: data[2],
+                            findex: data[10].join("_"),
+                            size: data[7].join("_"),
+                            btname: data[3],
+                            o_taskid: 0,
+                            o_page: "task",
+                            class_id: 0,
+                            from: 0,
+                        };
+                        getUid(function (value) {
+                            if (value) {
+                                postData.uid = value;
+                                console.log(postData);
+                                $.ajax({
+                                    type: "POST",
+                                    url: BTTaskCommitUrl,
+                                    data: postData,
+                                    success: function (commitData) {
+                                        if (commitData.match(/jsonp1234567890/)) {
+                                            callback({ status: true });
+                                        } else {
+                                            callback({ status: false, message: "unknownError" });
+                                        }
+                                    },
+                                });
+                            } else {
+                                callback({ status: false, message: "notLogin" });
+                            }
+                        });
+                    },
+                });
             });
         },
     };

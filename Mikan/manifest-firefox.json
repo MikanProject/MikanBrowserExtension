@@ -47,13 +47,13 @@
         "tabs",
         "http://*.mikanani.me/",
         "http://mikanani.me/",
-        "https://cdn.mmtrix.com/",
-        "http://dynamic.cloud.vip.xunlei.com/"
+        "https://cdn.mmtrix.com/"
     ],
     "optional_permissions": [
         "webRequest", 
         "webRequestBlocking",
-        "cookies"
+        "cookies",
+        "http://dynamic.cloud.vip.xunlei.com/"
     ],
     "version": "0.0.5"
 }
