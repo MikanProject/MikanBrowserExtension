@@ -52,7 +52,7 @@
         "message": "Add to xunlei offline download"
     },
     "xunleiNotLogin": {
-        "message": "Cannot get data from xunlei, please try to login at {0}"
+        "message": "Cannot get data from xunlei, please try to login at lixian.xunlei.com"
     },
     "xunleiUnknownError": {
         "message": "Unknown Error"

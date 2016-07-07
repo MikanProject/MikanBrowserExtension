@@ -44,7 +44,7 @@ class StateGroup extends Component {
         return (
             <div>
                 <AppBar
-                    title="最近更新"
+                    title={chrome.i18n.getMessage("recentUpdate")}
                     showMenuIconButton={false}
                     style={{ position: "fixed", top: 0 }}
                     iconElementRight={<IconButton onTouchTap={() => {

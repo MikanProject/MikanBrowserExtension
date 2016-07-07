@@ -37,6 +37,37 @@ const UpdateCardList = props => {
                         ) } />
                     <ListItem
                         innerDivStyle={{ paddingTop: "12px", paddingBottom: "12px" }}
+                        primaryText={chrome.i18n.getMessage("xunlei") }
+                        leftIcon={<FileDownload style={{ marginTop: "8px", marginBottom: "8px" }} />}
+                        onTouchTap={(event) => chrome.runtime.sendMessage(
+                            {
+                                type: "xunlei",
+                                targetUrl: "magnet:?xt=urn:btih:" + mentionData.MagnetLink,
+                            }, (response) => {
+                                let message;
+                                if (response.status) {
+                                    message = chrome.i18n.getMessage("xunleiSuccess");
+                                } else {
+                                    switch (response.message) {
+                                        case "notLogin":
+                                            message = chrome.i18n.getMessage("xunleiNotLogin");
+                                            break;
+                                        case "noMagnet":
+                                            message = chrome.i18n.getMessage("xunleiNoMagnet");
+                                            break;
+                                        default:
+                                            message = chrome.i18n.getMessage("xunleiUnknownError");
+                                            break;
+                                    }
+                                }
+                                window.InfoSnackbar.setState({
+                                    open: true,
+                                    message: message,
+                                });
+                            }
+                        ) } />
+                    <ListItem
+                        innerDivStyle={{ paddingTop: "12px", paddingBottom: "12px" }}
                         primaryText={chrome.i18n.getMessage("updateNotificationButtonCopy") }
                         leftIcon={<ContentCopy style={{ marginTop: "8px", marginBottom: "8px" }} />}
                         data-clipboard-text={"magnet:?xt=urn:btih:" + mentionData.MagnetLink}
