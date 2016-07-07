@@ -44,5 +44,23 @@
     },
     "refreshFailed": {
         "message": "刷新失败"
+    },
+    "recentUpdate": {
+        "message": "最近更新"
+    },
+    "xunlei": {
+        "message": "加入迅雷离线"
+    },
+    "xunleiNotLogin": {
+        "message": "无法获得资源信息，请先在{0}登录"
+    },
+    "xunleiUnknownError": {
+        "message": "未知错误"
+    },
+    "xunleiNoMagnet": {
+        "message": "迅雷暂时还没有收录相关的资源信息，请稍后再试"
+    },
+    "xunleiSuccess": {
+        "message": "已加入迅雷离线任务列表"
     }
 }

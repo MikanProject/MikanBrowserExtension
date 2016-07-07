@@ -1,6 +1,4 @@
 ﻿// string format repalcement from http://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format/4673436#4673436
-// First, checks if it isn't implemented yet.
-
 if (!String.prototype.format) {
     String.prototype.format = function () {
         let args = arguments;
@@ -59,19 +57,9 @@ function setupHash(forceRefresh) {
             type: "GET",
             success: function (data) {
                 localStorage.setItem("hash", data.Message);
-                $.ajaxSetup({
-                    headers: {
-                        "Authorization": "MikanHash " + localStorage.getItem("hash"),
-                    },
-                });
             },
         });
     }
-    $.ajaxSetup({
-        headers: {
-            "Authorization": "MikanHash " + localStorage.getItem("hash"),
-        },
-    });
 }
 
 function getUpdate(sendResponse) {
@@ -82,6 +70,9 @@ function getUpdate(sendResponse) {
         url: "http://api.mikanani.me/api/Mention?count=10",
         dataType: "json",
         type: "GET",
+        headers: {
+            "Authorization": "MikanHash " + localStorage.getItem("hash"),
+        },
         success: function (data) {
             localStorage.setItem("mentionDatas", JSON.stringify(data));
             let lastEpisodeId = localStorage.getItem("lastEpisodeId");

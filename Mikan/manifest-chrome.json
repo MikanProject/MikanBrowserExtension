@@ -2,7 +2,8 @@
     "background": {
         "scripts": [
             "lib/jquery/jquery.js",
-            "src/bg/background.js"
+            "src/bg/background.js",
+            "src/bg/xunlei-api.js"
         ],
         "persistent": true
     },
@@ -44,7 +45,13 @@
         "tabs",
         "http://*.mikanani.me/",
         "http://mikanani.me/",
-        "https://cdn.mmtrix.com/"
+        "https://cdn.mmtrix.com/",
+        "http://dynamic.cloud.vip.xunlei.com/"
     ],
-    "version": "0.0.4.2"
+    "optional_permissions": [
+        "webRequest", 
+        "webRequestBlocking",
+        "cookies"
+    ],
+    "version": "0.0.5"
 }

@@ -44,5 +44,23 @@
     },
     "refreshFailed": {
         "message": "Refresh Failed"
+    },
+    "recentUpdate": {
+        "message": "Recent Update"
+    },
+    "xunlei": {
+        "message": "Add to xunlei offline download"
+    },
+    "xunleiNotLogin": {
+        "message": "Cannot get data from xunlei, please try to login at {0}"
+    },
+    "xunleiUnknownError": {
+        "message": "Unknown Error"
+    },
+    "xunleiNoMagnet": {
+        "message": "The magnet link is currently not available on xunlei, please try later."
+    },
+    "xunleiSuccess": {
+        "message": "Add success"
     }
 }
