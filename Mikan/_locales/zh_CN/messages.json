@@ -52,7 +52,7 @@
         "message": "加入迅雷离线"
     },
     "xunleiNotLogin": {
-        "message": "无法获得资源信息，请先在 lixian.xunlei.com 登录"
+        "message": "无法获得信息，请先在lixian.xunlei.com登录"
     },
     "xunleiUnknownError": {
         "message": "未知错误"
