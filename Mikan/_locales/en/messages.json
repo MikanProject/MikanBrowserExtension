@@ -62,5 +62,8 @@
     },
     "xunleiSuccess": {
         "message": "Add success"
+    },
+    "xunleiFirefoxUnknown": {
+        "message": "Request sent"
     }
 }

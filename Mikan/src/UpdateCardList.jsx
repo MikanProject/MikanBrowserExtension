@@ -44,6 +44,13 @@ const UpdateCardList = props => {
                                 type: "xunlei",
                                 targetUrl: "magnet:?xt=urn:btih:" + mentionData.MagnetLink,
                             }, (response) => {
+                                //https://bugzilla.mozilla.org/show_bug.cgi?id=1228044
+                                if (response == null) {
+                                    window.InfoSnackbar.setState({
+                                        open: true,
+                                        message: chrome.i18n.getMessage("xunleiFirefoxUnknown"),
+                                    });
+                                }
                                 let message;
                                 if (response.status) {
                                     message = chrome.i18n.getMessage("xunleiSuccess");

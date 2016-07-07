@@ -62,5 +62,8 @@
     },
     "xunleiSuccess": {
         "message": "已加入迅雷离线任务列表"
+    },
+    "xunleiFirefoxUnknown": {
+        "message": "已发送请求，请前往离线查看"
     }
 }
