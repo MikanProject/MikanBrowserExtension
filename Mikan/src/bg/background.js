@@ -34,6 +34,11 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     } else if (request.type === "refresh") {
         getUpdate(sendResponse);
         return true;
+    } else if (request.type === "xunlei") {
+        XunleiApi.AddBTTask(request.targetUrl, function (data) {
+            sendResponse(data);
+        });
+        return true;
     }
 });
 
