@@ -149,7 +149,6 @@ let XunleiApi = (function () {
                         getUid(function (value) {
                             if (value) {
                                 postData.uid = value;
-                                console.log(postData);
                                 $.ajax({
                                     type: "POST",
                                     url: BTTaskCommitUrl,
