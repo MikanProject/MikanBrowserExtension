@@ -47,9 +47,7 @@
         "tabs",
         "http://*.mikanani.me/",
         "http://mikanani.me/",
-        "https://cdn.mmtrix.com/"
-    ],
-    "optional_permissions": [
+        "https://cdn.mmtrix.com/",
         "webRequest", 
         "webRequestBlocking",
         "cookies",

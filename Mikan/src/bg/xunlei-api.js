@@ -68,6 +68,12 @@ let XunleiApi = (function () {
         });
     }
     function getUid(callback) {
+        if (typeof chrome.permissions === "undefined") {  //firefox workround
+            chrome.cookies.get({ url: "http://dynamic.cloud.vip.xunlei.com/", name: "userid" }, function (cookie) {
+                if (cookie == null) callback(false);
+                callback(cookie.value);
+            });
+        }
         chrome.permissions.contains({
             permissions: ["cookies"],
         }, function (result) {
@@ -93,6 +99,7 @@ let XunleiApi = (function () {
         });
     }
     function grantXunleiAccess(callback) {
+        if (typeof chrome.permissions === "undefined") callback(); //firefox workaround
         chrome.permissions.contains({
             permissions: ["cookies"],
             origins: ["http://dynamic.cloud.vip.xunlei.com/"],
