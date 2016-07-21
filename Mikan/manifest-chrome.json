@@ -45,7 +45,8 @@
         "tabs",
         "http://*.mikanani.me/",
         "http://mikanani.me/",
-        "https://cdn.mmtrix.com/"
+        "http://mikanani.me/",
+        "https://cdn.conn.cc/"
     ],
     "optional_permissions": [
         "webRequest", 
@@ -53,5 +54,5 @@
         "cookies",
         "http://dynamic.cloud.vip.xunlei.com/"
     ],
-    "version": "0.0.5"
+    "version": "0.0.5.1"
 }
