@@ -22,7 +22,7 @@ const UpdateCardList = props => {
                         onTouchTap={(event) => chrome.runtime.sendMessage(
                             {
                                 type: "openWindow",
-                                targetUrl: "magnet:?xt=urn:btih:" + mentionData.MagnetLink,
+                                targetUrl: mentionData.FullMagnetLink,
                             }
                         ) } />
                     <ListItem
@@ -77,7 +77,7 @@ const UpdateCardList = props => {
                         innerDivStyle={{ paddingTop: "12px", paddingBottom: "12px" }}
                         primaryText={chrome.i18n.getMessage("updateNotificationButtonCopy") }
                         leftIcon={<ContentCopy style={{ marginTop: "8px", marginBottom: "8px" }} />}
-                        data-clipboard-text={"magnet:?xt=urn:btih:" + mentionData.MagnetLink}
+                        data-clipboard-text={mentionData.FullMagnetLink}
                         className="clipBtn" />
                     <ListItem
                         innerDivStyle={{ paddingTop: "12px", paddingBottom: "12px" }}
