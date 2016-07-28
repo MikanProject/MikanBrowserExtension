@@ -47,11 +47,10 @@
         "tabs",
         "http://*.mikanani.me/",
         "http://mikanani.me/",
-        "https://cdn.conn.cc/",
         "webRequest", 
         "webRequestBlocking",
         "cookies",
         "http://dynamic.cloud.vip.xunlei.com/"
     ],
-    "version": "0.0.5.1"
+    "version": "0.0.5.2"
 }
