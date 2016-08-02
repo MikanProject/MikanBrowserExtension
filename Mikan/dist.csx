@@ -62,4 +62,4 @@ distDir.Create();
 DirectoryCopy("_locales", Path.Combine("dist", "_locales"), true);
 DirectoryCopy("lib", Path.Combine("dist", "lib"), true);
 DirectoryCopy("icons", Path.Combine("dist", "icons"), true);
-RecursiveCopyFiles("src", "dist", new List<string> {".html", ".js", ".css"});
+RecursiveCopyFiles("src", "dist", new List<string> {".html", ".js", ".css", ".woff"});
