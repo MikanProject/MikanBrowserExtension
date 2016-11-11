@@ -32,7 +32,7 @@ const UpdateCardList = props => {
                         onTouchTap={(event) => chrome.runtime.sendMessage(
                             {
                                 type: "openWindow",
-                                targetUrl: "http://dl.mikanani.me/file/" + new Date(mentionData.PublishDate).getFullYear().toString() + ("0" + (new Date(mentionData.PublishDate).getMonth() + 1)).slice(-2) + ("0" + new Date(mentionData.PublishDate).getDate()).slice(-2) + "/?" + mentionData.MagnetLink + ".torrent",
+                                targetUrl: "http://mikanani.me/Download/" + new Date(mentionData.PublishDate).getFullYear().toString() + ("0" + (new Date(mentionData.PublishDate).getMonth() + 1)).slice(-2) + ("0" + new Date(mentionData.PublishDate).getDate()).slice(-2) + "/" + mentionData.MagnetLink + ".torrent",
                             }
                         ) } />
                     <ListItem
