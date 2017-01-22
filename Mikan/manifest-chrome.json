@@ -2,6 +2,7 @@
     "background": {
         "scripts": [
             "lib/jquery/jquery.js",
+            "lib/moment/moment.js",
             "src/bg/background.js",
             "src/bg/xunlei-api.js"
         ],
@@ -53,5 +54,5 @@
         "cookies",
         "http://dynamic.cloud.vip.xunlei.com/"
     ],
-    "version": "0.0.5.4"
+    "version": "0.0.5.6"
 }

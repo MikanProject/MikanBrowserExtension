@@ -34,8 +34,7 @@ if (!String.prototype.format) {
             "http://open.acgtracker.com:1096/announce",
         ];
         let magnet = "magnet:?xt=urn:btih:" + hash;
-        for (i in trackers)
-        {
+        for (i in trackers) {
             magnet += "&tr=" + encodeURIComponent(trackers[i]);
         }
         return magnet;
@@ -121,7 +120,9 @@ if (!String.prototype.format) {
         if (buttonIndex === 0) {
             openWindow(window.msg.FullMagnetLink);
         } else {
-            openWindow("http://dl.mikanani.me/file/" + new Date(window.msg.PublishDate).getFullYear().toString() + ("0" + (new Date(window.msg.PublishDate).getMonth() + 1)).slice(-2) + ("0" + new Date(window.msg.PublishDate).getDate()).slice(-2) + "/?" + window.msg.MagnetLink + ".torrent");
+            let publishDate = moment(window.msg.PublishDate);
+            publishDate = publishDate.add(8, "hours").toDate();
+            openWindow("http://mikanani.me/Download/" + publishDate.getFullYear().toString() + ("0" + (publishDate.getMonth() + 1)).slice(-2) + ("0" + publishDate.getDate()).slice(-2) + "/" + window.msg.MagnetLink + ".torrent");
         }
     });
 

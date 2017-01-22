@@ -4,16 +4,16 @@
     chrome.runtime.sendMessage({ type: "loginStatus", loginStatus: "logout" });
 }
 
-$(".js-magnet.w-other-c").after(' <a class="mikanex-xunlei magnet-link w-other-c">[添加至迅雷离线]</a>');
-$(".js-magnet:not(.w-other-c)").after(' <a class="mikanex-xunlei magnet-link">[添加至迅雷离线]</a>');
+$(".js-magnet.w-other-c").after(' <a class="mikanex-xunlei magnet-link w-other-c rss-episode-name">[添加至迅雷离线]</a>');
+$(".js-magnet:not(.w-other-c)").after(' <a class="mikanex-xunlei magnet-link rss-episode-name">[添加至迅雷离线]</a>');
 
 (function () {
     function TestDisplay() {
         if ($("#an-list").length !== 0 && $("#an-list").find(".mikanex-xunlei").length === 0) {
-            $(".js-magnet.w-other-c").after(' <a class="mikanex-xunlei magnet-link w-other-c">[添加至迅雷离线]</a>');
+            $(".js-magnet.w-other-c").after(' <a class="mikanex-xunlei magnet-link w-other-c rss-episode-name">[添加至迅雷离线]</a>');
         }
         if ($(".sk-bangumi").length !== 0 && $(".sk-bangumi").find(".mikanex-xunlei:visible").length === 0) {
-            $(".js-magnet:not(.w-other-c)").after(' <a class="mikanex-xunlei magnet-link">[添加至迅雷离线]</a>');
+            $(".js-magnet:not(.w-other-c)").after(' <a class="mikanex-xunlei magnet-link rss-episode-name">[添加至迅雷离线]</a>');
         }
     }
 
