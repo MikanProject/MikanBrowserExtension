@@ -19,13 +19,16 @@
             "32": "icons/icon32.png",
             "48": "icons/icon48.png",
             "128": "icons/icon128.png"
-         },
+        },
         "default_title": "Mikan",
         "default_popup": "src/index.html"
     },
     "content_scripts": [
         {
-            "matches": ["http://mikanani.me/*"],
+            "matches": [
+                "http://mikanani.me/*",
+                "https://mikanani.me/*"
+            ],
             "js": [
                 "lib/jquery/jquery.js",
                 "src/inject/inject.js"
@@ -34,7 +37,7 @@
     ],
     "default_locale": "zh_CN",
     "description": "__MSG_extDescription__",
-    "homepage_url": "http://mikanani.me",
+    "homepage_url": "https://mikanani.me",
     "icons": {
         "16": "icons/icon16.png",
         "32": "icons/icon32.png",
@@ -48,10 +51,12 @@
         "tabs",
         "http://*.mikanani.me/",
         "http://mikanani.me/",
-        "webRequest", 
+        "https://*.mikanani.me/",
+        "https://mikanani.me/",
+        "webRequest",
         "webRequestBlocking",
         "cookies",
         "http://dynamic.cloud.vip.xunlei.com/"
     ],
-    "version": "0.0.5.6"
+    "version": "0.0.5.7"
 }
