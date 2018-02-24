@@ -12,7 +12,7 @@ const config = {
   ],
   //Config options on how to interpret requires imports
   resolve: {
-    extensions: ["", ".js", ".jsx"],
+    extensions: [".js", ".jsx"],
     //node_modules: ["web_modules", "node_modules"]  (Default Settings)
   },
   output: {
@@ -40,10 +40,6 @@ const config = {
         exclude: [nodeModulesPath],
       },
     ],
-  },
-  //eslint config options. Part of the eslint-loader package
-  eslint: {
-    configFile: '.eslintrc',
   },
 };
 

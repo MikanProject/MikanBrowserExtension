@@ -13,6 +13,6 @@ Mikan Browser Extension for chrome and firefox.
 ```bash
 cd Mikan
 npm update
-npm update --dev
+npm update -D
 npm run build
 ```

@@ -9,7 +9,7 @@ const config = {
   entry: [path.join(__dirname, '/src/index.jsx')],
   resolve: {
     //When require, do not have to add these extensions to file's name
-    extensions: ["", ".js", ".jsx"],
+    extensions: [".js", ".jsx"],
     //node_modules: ["web_modules", "node_modules"]  (Default Settings)
   },
   //output config
@@ -40,10 +40,6 @@ const config = {
         exclude: [nodeModulesPath],
       },
     ],
-  },
-  //Eslint config
-  eslint: {
-    configFile: '.eslintrc', //Rules for eslint
   },
 };
 
