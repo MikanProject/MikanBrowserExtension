@@ -12,10 +12,7 @@ Mikan Browser Extension for chrome and firefox.
 
 ```bash
 cd Mikan
-scriptcs dist.csx
-npm install 
+npm update
+npm update --dev
 npm run build
 ```
-
-Then copy the mainfest file you need to dist folder and rename it to ```mainfest.json```.
-

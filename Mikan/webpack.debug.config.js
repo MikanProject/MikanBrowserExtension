@@ -1,7 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
-const buildPath = path.resolve(__dirname, 'src');
+const buildPath = path.resolve(__dirname, 'dist/chrome');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const config = {
   //Entry points to the project
@@ -15,9 +17,16 @@ const config = {
   },
   output: {
     path: buildPath,    //Path of output file
-    filename: '_index.js',
+    filename: 'index.js',
   },
   plugins: [
+    new CleanWebpackPlugin(buildPath),
+    new CopyWebpackPlugin([
+      { from: 'manifest-chrome.json', to: 'manifest.json' },
+      { from: 'node_modules/jquery/dist/jquery.min.js', to: 'lib/jquery/jquery.js' },
+      { from: 'node_modules/moment/min/moment-with-locales.min.js', to: 'lib/moment/moment.js' },
+      { context: 'src/', from: '**/*', to: './', ignore: [ '*.jsx', 'edgelib/*' ] }
+    ]),
     //Allows error warnings but does not stop compiling. Will remove when eslint is added
     new webpack.NoErrorsPlugin(),
   ],

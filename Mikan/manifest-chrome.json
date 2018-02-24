@@ -3,8 +3,8 @@
         "scripts": [
             "lib/jquery/jquery.js",
             "lib/moment/moment.js",
-            "src/bg/background.js",
-            "src/bg/xunlei-api.js"
+            "bg/background.js",
+            "bg/xunlei-api.js"
         ],
         "persistent": true
     },
@@ -16,7 +16,7 @@
             "128": "icons/icon128.png"
          },
         "default_title": "Mikan",
-        "default_popup": "src/index.html"
+        "default_popup": "index.html"
     },
     "content_scripts": [
         {
@@ -26,7 +26,7 @@
             ],
             "js": [
                 "lib/jquery/jquery.js",
-                "src/inject/inject.js"
+                "inject/inject.js"
             ]
         }
     ],
@@ -56,5 +56,5 @@
         "cookies",
         "http://dynamic.cloud.vip.xunlei.com/"
     ],
-    "version": "0.0.5.7"
+    "version": "0.0.5.8"
 }

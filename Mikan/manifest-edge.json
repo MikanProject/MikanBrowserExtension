@@ -1,7 +1,7 @@
 {
     "author": "MikanProject",
     "background": {
-        "page": "src/edgelib/background.html",
+        "page": "edgelib/background.html",
         "persistent": true
     },
     "browser_action": {
@@ -9,7 +9,7 @@
             "40": "icons/icon40.png"
         },
         "default_title": "Mikan",
-        "default_popup": "src/index.html"
+        "default_popup": "index.html"
     },
     "content_scripts": [
         {
@@ -19,7 +19,7 @@
             ],
             "js": [
                 "lib/jquery/jquery.js",
-                "src/inject/inject.js"
+                "inject/inject.js"
             ]
         }
     ],
@@ -45,9 +45,9 @@
         "cookies",
         "http://dynamic.cloud.vip.xunlei.com/"
     ],
-    "version": "0.0.5.7",
+    "version": "0.0.5.8",
     "-ms-preload": {
-        "backgroundScript": "src/edgelib/backgroundScriptsAPIBridge.js",
-        "contentScript": "src/edgelib/contentScriptsAPIBridge.js"
+        "backgroundScript": "edgelib/backgroundScriptsAPIBridge.js",
+        "contentScript": "edgelib/contentScriptsAPIBridge.js"
     }
 }

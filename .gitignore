@@ -4,4 +4,3 @@ node_modules
 dist
 manifest.json
 _index.js
-package-lock.json

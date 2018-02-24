@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const buildPath = path.resolve(__dirname, 'dist/firefox');
+const buildPath = path.resolve(__dirname, 'dist/edge');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -20,14 +20,21 @@ const config = {
   plugins: [
     new CleanWebpackPlugin(buildPath),
     new CopyWebpackPlugin([
-      { from: 'manifest-firefox.json', to: 'manifest.json' },
+      { from: 'manifest-edge.json', to: 'manifest.json' },
       { from: 'node_modules/jquery/dist/jquery.min.js', to: 'lib/jquery/jquery.js' },
       { from: 'node_modules/moment/min/moment-with-locales.min.js', to: 'lib/moment/moment.js' },
-      { context: 'src/', from: '**/*', to: './', ignore: [ '*.jsx', 'edgelib/*' ] }
+      { context: 'src/', from: '**/*', to: './', ignore: [ '*.jsx' ] }
     ]),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
+      },
+    }),
+    //Minify the bundle
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        //supresses warnings, usually from module minification
+        warnings: false,
       },
     }),
   ],
