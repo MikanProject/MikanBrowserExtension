@@ -23,6 +23,7 @@ const config = {
       { from: 'manifest-firefox.json', to: 'manifest.json' },
       { from: 'node_modules/jquery/dist/jquery.min.js', to: 'lib/jquery/jquery.js' },
       { from: 'node_modules/moment/min/moment-with-locales.min.js', to: 'lib/moment/moment.js' },
+      { from: 'node_modules/clipboard/dist/clipboard.min.js', to: 'lib/clipboard/clipboard.js' },
       { context: 'src/', from: '**/*', to: './', ignore: [ '*.jsx', 'edgelib/*' ] }
     ]),
     new webpack.DefinePlugin({

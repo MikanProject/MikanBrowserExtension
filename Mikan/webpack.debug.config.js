@@ -23,8 +23,9 @@ const config = {
     new CleanWebpackPlugin(buildPath),
     new CopyWebpackPlugin([
       { from: 'manifest-chrome.json', to: 'manifest.json' },
-      { from: 'node_modules/jquery/dist/jquery.min.js', to: 'lib/jquery/jquery.js' },
-      { from: 'node_modules/moment/min/moment-with-locales.min.js', to: 'lib/moment/moment.js' },
+      { from: 'node_modules/jquery/dist/jquery.js', to: 'lib/jquery/jquery.js' },
+      { from: 'node_modules/moment/min/moment-with-locales.js', to: 'lib/moment/moment.js' },
+      { from: 'node_modules/clipboard/dist/clipboard.js', to: 'lib/clipboard/clipboard.js' },
       { context: 'src/', from: '**/*', to: './', ignore: [ '*.jsx', 'edgelib/*' ] }
     ]),
     //Allows error warnings but does not stop compiling. Will remove when eslint is added
