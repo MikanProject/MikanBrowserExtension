@@ -102,11 +102,6 @@ if (!String.prototype.format) {
         } else if (request.type === "refresh") {
             getUpdate(sendResponse);
             return true;
-        } else if (request.type === "xunlei") {
-            XunleiApi.AddBTTask(request.targetUrl, function (data) {
-                sendResponse(data);
-            });
-            return true;
         } else if (request.type === "generateMagnet") {
             sendResponse(generateMagnet(request.hash));
         }

@@ -39,13 +39,9 @@
         "http://*.mikanani.me/",
         "http://mikanani.me/",
         "https://*.mikanani.me/",
-        "https://mikanani.me/",
-        "webRequest",
-        "webRequestBlocking",
-        "cookies",
-        "http://dynamic.cloud.vip.xunlei.com/"
+        "https://mikanani.me/"
     ],
-    "version": "0.0.5.8",
+    "version": "0.0.6.0",
     "-ms-preload": {
         "backgroundScript": "edgelib/backgroundScriptsAPIBridge.js",
         "contentScript": "edgelib/contentScriptsAPIBridge.js"

@@ -3,8 +3,7 @@
         "scripts": [
             "lib/jquery/jquery.js",
             "lib/moment/moment.js",
-            "bg/background.js",
-            "bg/xunlei-api.js"
+            "bg/background.js"
         ],
         "persistent": true
     },
@@ -50,11 +49,5 @@
         "https://*.mikanani.me/",
         "https://mikanani.me/"
     ],
-    "optional_permissions": [
-        "webRequest", 
-        "webRequestBlocking",
-        "cookies",
-        "http://dynamic.cloud.vip.xunlei.com/"
-    ],
-    "version": "0.0.5.8"
+    "version": "0.0.6.0"
 }
