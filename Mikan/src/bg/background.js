@@ -60,15 +60,14 @@ if (!String.prototype.format) {
                 let lastEpisodeId = localStorage.getItem("lastEpisodeId");
                 if (lastEpisodeId == null || "" + data[0].EpisodeId !== lastEpisodeId) {
                     window.msg = data[0];
-                    chrome.notifications.create("MikanUpdate",
-                        {
+                    try {
+                        chrome.notifications.create("MikanUpdate", {
                             type: "basic",
                             title: chrome.i18n.getMessage("updateNotificationTitle"),
                             message: chrome.i18n.getMessage("updateNotificationMessage")
                                 .format(data[0].SubtitleGroupName, data[0].BangumiName, data[0].Name),
                             iconUrl: "http://mikanani.me" + data[0].Cover,
-                            buttons: [
-                                {
+                            buttons: [{
                                     title: chrome.i18n.getMessage("updateNotificationButtonDownload"),
                                     iconUrl: "icons/ic_file_download_black_24dp_2x.png",
                                 },
@@ -78,6 +77,15 @@ if (!String.prototype.format) {
                                 },
                             ],
                         });
+                    } catch (err) {
+                        chrome.notifications.create("MikanUpdate", {
+                            type: "basic",
+                            title: chrome.i18n.getMessage("updateNotificationTitle"),
+                            message: chrome.i18n.getMessage("updateNotificationMessage")
+                                .format(data[0].SubtitleGroupName, data[0].BangumiName, data[0].Name),
+                            iconUrl: "http://mikanani.me" + data[0].Cover
+                        });
+                    }
                     localStorage.setItem("lastEpisodeId", "" + data[0].EpisodeId);
                 }
                 if (sendResponse instanceof Function) sendResponse({ status: "success" });
