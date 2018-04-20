@@ -3,10 +3,9 @@ if (!String.prototype.format) {
     String.prototype.format = function () {
         let args = arguments;
         return this.replace(/{(\d+)}/g, function (match, number) {
-            return typeof args[number] != 'undefined'
-                ? args[number]
-                : match
-                ;
+            return typeof args[number] != 'undefined' ?
+                args[number] :
+                match;
         });
     };
 }
@@ -14,10 +13,12 @@ if (!String.prototype.format) {
 (function () {
     function openWindow(targetUrl) {
         chrome.tabs.create({
-            url: targetUrl,
-        },
+                url: targetUrl,
+            },
             function (tabInfo) {
-                chrome.windows.update(tabInfo.windowId, { focused: true });
+                chrome.windows.update(tabInfo.windowId, {
+                    focused: true
+                });
             });
     }
 
@@ -43,7 +44,9 @@ if (!String.prototype.format) {
 
     function getUpdate(sendResponse) {
         if (localStorage.getItem("loginStatus") === "logout") {
-            if (sendResponse instanceof Function) sendResponse({ status: "logout" });
+            if (sendResponse instanceof Function) sendResponse({
+                status: "logout"
+            });
         }
         $.ajax({
             url: "http://api.mikanani.me/api/Mention?count=10",
@@ -88,11 +91,17 @@ if (!String.prototype.format) {
                     }
                     localStorage.setItem("lastEpisodeId", "" + data[0].EpisodeId);
                 }
-                if (sendResponse instanceof Function) sendResponse({ status: "success" });
+                if (sendResponse instanceof Function) sendResponse({
+                    status: "success"
+                });
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 setupHash(true);
-                if (sendResponse instanceof Function) sendResponse({ status: "error", errorThrown: errorThrown, data: jqXHR.responseText });
+                if (sendResponse instanceof Function) sendResponse({
+                    status: "error",
+                    errorThrown: errorThrown,
+                    data: jqXHR.responseText
+                });
             },
         });
     }
