@@ -23,15 +23,16 @@ if (!String.prototype.format) {
 
     function generateMagnet(hash) {
         let trackers = [
-            "http://208.67.16.113:8000/announce",
-            "udp://208.67.16.113:8000/announce",
-            "http://tracker.openbittorrent.com:80/announce",
-            "http://tracker.publicbt.com:80/announce",
-            "http://tracker.prq.to/announce",
             "http://t.acg.rip:6699/announce",
             "https://tr.bangumi.moe:9696/announce",
             "udp://tr.bangumi.moe:6969/announce",
             "http://open.acgtracker.com:1096/announce",
+            "http://t.nyaatracker.com/announce",
+            "http://tracker.kamigami.org:2710/announce",
+            "http://share.camoe.cn:8080/announce",
+            "http://opentracker.acgnx.se/announce",
+            "http://anidex.moe:6969/announce",
+            "udp://tracker.opentrackr.org:1337/announce",
         ];
         let magnet = "magnet:?xt=urn:btih:" + hash;
         for (i in trackers) {
