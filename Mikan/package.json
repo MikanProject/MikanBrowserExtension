@@ -17,9 +17,9 @@
     "jquery": "^3.3.1",
     "material-ui": "^0.20.0",
     "moment": "^2.22.2",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-tap-event-plugin": "^3.0.2"
+    "react": "16.3.2",
+    "react-dom": "16.3.3",
+    "react-tap-event-plugin": "3.0.2"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -28,7 +28,7 @@
     "babel-preset-react": "^6.24.1",
     "caniuse-api": "^2.0.0",
     "clean-webpack-plugin": "^0.1.19",
-    "copy-webpack-plugin": "^4.5.2",
+    "copy-webpack-plugin": "^4.5.3",
     "webpack": "^3.12.0"
   }
 }
