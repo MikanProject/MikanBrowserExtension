@@ -13,7 +13,7 @@
             "32": "icons/icon32.png",
             "48": "icons/icon48.png",
             "128": "icons/icon128.png"
-         },
+        },
         "default_title": "Mikan",
         "default_popup": "index.html"
     },
@@ -49,5 +49,5 @@
         "https://*.mikanani.me/",
         "https://mikanani.me/"
     ],
-    "version": "0.0.6.1"
+    "version": "0.0.6.2"
 }
