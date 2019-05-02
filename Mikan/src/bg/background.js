@@ -81,13 +81,15 @@ if (!String.prototype.format) {
                             ],
                         });
                     } catch (err) {
-                        chrome.notifications.create("MikanUpdate", {
-                            type: "basic",
-                            title: chrome.i18n.getMessage("updateNotificationTitle"),
-                            message: chrome.i18n.getMessage("updateNotificationMessage")
-                                .format(data[0].SubtitleGroupName, data[0].BangumiName, data[0].Name),
-                            iconUrl: "http://mikanani.me" + data[0].Cover
-                        });
+                        try {
+                            chrome.notifications.create("MikanUpdate", {
+                                type: "basic",
+                                title: chrome.i18n.getMessage("updateNotificationTitle"),
+                                message: chrome.i18n.getMessage("updateNotificationMessage")
+                                    .format(data[0].SubtitleGroupName, data[0].BangumiName, data[0].Name),
+                                iconUrl: "http://mikanani.me" + data[0].Cover
+                            });
+                        } catch (errr) {}
                     }
                     localStorage.setItem("lastEpisodeId", "" + data[0].EpisodeId);
                 }
@@ -125,19 +127,21 @@ if (!String.prototype.format) {
         }
     });
 
-    chrome.notifications.onClicked.addListener(function () {
-        openWindow("http://mikanani.me/Home/Episode/" + window.msg.MagnetLink);
-    });
+    try {
+        chrome.notifications.onClicked.addListener(function () {
+            openWindow("http://mikanani.me/Home/Episode/" + window.msg.MagnetLink);
+        });
 
-    chrome.notifications.onButtonClicked.addListener(function (notificationId, buttonIndex) {
-        if (buttonIndex === 0) {
-            openWindow(window.msg.FullMagnetLink);
-        } else {
-            let publishDate = moment(window.msg.PublishDate);
-            publishDate = publishDate.add(8, "hours").toDate();
-            openWindow("http://mikanani.me/Download/" + publishDate.getFullYear().toString() + ("0" + (publishDate.getMonth() + 1)).slice(-2) + ("0" + publishDate.getDate()).slice(-2) + "/" + window.msg.MagnetLink + ".torrent");
-        }
-    });
+        chrome.notifications.onButtonClicked.addListener(function (notificationId, buttonIndex) {
+            if (buttonIndex === 0) {
+                openWindow(window.msg.FullMagnetLink);
+            } else {
+                let publishDate = moment(window.msg.PublishDate);
+                publishDate = publishDate.add(8, "hours").toDate();
+                openWindow("http://mikanani.me/Download/" + publishDate.getFullYear().toString() + ("0" + (publishDate.getMonth() + 1)).slice(-2) + ("0" + publishDate.getDate()).slice(-2) + "/" + window.msg.MagnetLink + ".torrent");
+            }
+        });
+    } catch (err) {}
 
     function setupHash(forceRefresh) {
         if (forceRefresh || localStorage.getItem("hash") == null) {
