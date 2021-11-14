@@ -1,0 +1,69 @@
+{
+    "extDescription": {
+        "message": "让蜜柑酱变得更加强大！"
+    },
+    "updateNotificationTitle": {
+        "message": "蜜柑酱发现了新番更新"
+    },
+    "updateNotificationMessage": {
+        "message": "{0}的{1}更新了！\n{2}",
+        "description": "{0}=subtitleGroupName, {1}=BangumiName, {2}=Title"
+    },
+    "updateNotificationButtonDownload": {
+        "message": "下载"
+    },
+    "updateNotificationButtonDownloadTorrent": {
+        "message": "下载种子"
+    },
+    "updateNotificationButtonCopy": {
+        "message": "复制磁链"
+    },
+    "updateNotificationButtonOpen": {
+        "message": "打开介绍页"
+    },
+    "error": {
+        "message": "发生错误"
+    },
+    "errorNotLogin": {
+        "message": "请先登录"
+    },
+    "errorNotLoginButtonLogin": {
+        "message": "登录"
+    },
+    "errorNoData": {
+        "message": "暂时没有数据，请尝试刷新"
+    },
+    "copySuccess": {
+        "message": "复制成功"
+    },
+    "copyFailed": {
+        "message": "复制失败"
+    },
+    "refreshSuccess": {
+        "message": "刷新成功"
+    },
+    "refreshFailed": {
+        "message": "刷新失败"
+    },
+    "recentUpdate": {
+        "message": "最近更新"
+    },
+    "xunlei": {
+        "message": "加入迅雷离线"
+    },
+    "xunleiNotLogin": {
+        "message": "无法获得信息，请先在lixian.xunlei.com登录"
+    },
+    "xunleiUnknownError": {
+        "message": "未知错误"
+    },
+    "xunleiNoMagnet": {
+        "message": "迅雷暂时还没有收录相关的资源信息，请稍后再试"
+    },
+    "xunleiSuccess": {
+        "message": "已加入迅雷离线任务列表"
+    },
+    "xunleiFirefoxUnknown": {
+        "message": "已发送请求，请前往离线查看"
+    }
+}

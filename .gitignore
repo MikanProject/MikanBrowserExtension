@@ -4,3 +4,4 @@ node_modules
 dist
 manifest.json
 _index.js
+_ignore

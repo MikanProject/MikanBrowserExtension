@@ -1,0 +1,37 @@
+module.exports = {
+  parser: 'vue-eslint-parser',
+  plugins: ['@typescript-eslint'],
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
+    tsconfigRootDir: __dirname,
+    project: ['./tsconfig.json'],
+    extraFileExtensions: ['.vue'],
+  },
+  extends: [
+    'airbnb-base',
+    'airbnb-typescript/base',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:vue/vue3-recommended',
+    'plugin:prettier/recommended',
+  ],
+  env: {
+    node: true,
+  },
+  rules: {
+    'consistent-return': ['error', { treatUndefinedAsUnspecified: false }],
+    'no-prototype-builtins': 'off',
+    'no-console': 'off',
+    'no-await-in-loop': 'off',
+    'no-void': 'off',
+    'no-use-before-define': ['error', { functions: false, classes: true, variables: true }],
+    'max-classes-per-file': 'off',
+    'class-methods-use-this': 'off',
+    'import/prefer-default-export': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/restrict-template-expressions': 'off',
+    '@typescript-eslint/naming-convention': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/return-await': ['error', 'always'],
+  },
+};

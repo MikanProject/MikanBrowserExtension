@@ -1,4 +1,4 @@
-# MikanBrowserExtension
+# Mikan Browser Extension
 
 Mikan Browser Extension for chrome and firefox.
 
@@ -12,7 +12,6 @@ Mikan Browser Extension for chrome and firefox.
 
 ```bash
 cd Mikan
-npm update
-npm update -D
-npm run build
+yarn
+yarn build
 ```
