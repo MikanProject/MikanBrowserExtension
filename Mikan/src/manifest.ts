@@ -25,13 +25,7 @@ async function getManifest() {
       48: './assets/icon48.png',
       128: './assets/icon128.png',
     },
-    permissions: [
-      'tabs',
-      'http://*.mikanani.me/',
-      'http://mikanani.me/',
-      'https://*.mikanani.me/',
-      'https://mikanani.me/',
-    ],
+    permissions: ['http://*.mikanani.me/', 'http://mikanani.me/', 'https://*.mikanani.me/', 'https://mikanani.me/'],
   };
 
   return manifest;
