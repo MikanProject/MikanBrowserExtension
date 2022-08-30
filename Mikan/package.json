@@ -30,7 +30,7 @@
     "husky": "^7.0.1",
     "prettier": "^2.4.1",
     "typescript": "^4.5.2",
-    "vite": "^2.6.4",
+    "vite": "^2.9.13",
     "vite-plugin-windicss": "^1.5.1",
     "vue-tsc": "^0.29.6",
     "web-ext": "^6.5.0"
