@@ -26,7 +26,7 @@
 import { Options, Vue } from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
 import { mdiDownload, mdiContentCopy, mdiOpenInNew } from '@mdi/js';
-import { sendMessage } from 'webext-bridge';
+import { sendMessage } from 'webext-bridge/content-script';
 import useI18n from '../composables/useI18n';
 import { Episode } from '../../types/episode';
 import ListButton from './ListButton.vue';

@@ -8,7 +8,7 @@
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component';
 import { mdiRefresh } from '@mdi/js';
-import { sendMessage } from 'webext-bridge';
+import { sendMessage } from 'webext-bridge/content-script';
 import useI18n from '../composables/useI18n';
 import IconButton from './IconButton.vue';
 

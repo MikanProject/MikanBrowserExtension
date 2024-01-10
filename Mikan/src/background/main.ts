@@ -1,5 +1,5 @@
 import browser from 'webextension-polyfill';
-import { onMessage } from 'webext-bridge';
+import { onMessage } from 'webext-bridge/background';
 import { Episode } from '../types/episode';
 
 async function openWindow(targetUrl: string) {
@@ -34,7 +34,7 @@ function generateMagnet(hash: string) {
 async function setupHash(forceRefresh?: boolean) {
   if (forceRefresh || (localStorage.getItem('hash') ?? '') === '') {
     try {
-      const response = await fetch('http://mikanani.me/Account/ApiLogin');
+      const response = await fetch('https://mikanani.me/Account/ApiLogin');
       const { Message: hash } = (await response.json()) as { Message: string };
       localStorage.setItem('hash', hash);
     } catch (error) {
@@ -48,7 +48,7 @@ async function setupHash(forceRefresh?: boolean) {
 async function getUpdate() {
   try {
     if ((localStorage.getItem('hash') ?? '') === '') await setupHash();
-    const response = await fetch('http://api.mikanani.me/api/Mention?count=10', {
+    const response = await fetch('https://api.mikanani.me/api/Mention?count=10', {
       headers: { Authorization: `MikanHash ${localStorage.getItem('hash')}` },
     });
     let data = (await response.json()) as Episode[];
