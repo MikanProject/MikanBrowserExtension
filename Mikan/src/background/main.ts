@@ -45,6 +45,8 @@ async function setupHash(forceRefresh?: boolean) {
   }
 }
 
+let updateErrorCount = 0;
+
 async function getUpdate() {
   try {
     if ((localStorage.getItem('hash') ?? '') === '') await setupHash();
@@ -57,6 +59,8 @@ async function getUpdate() {
     return { status: 'success' };
   } catch (error) {
     if (error instanceof Error) {
+      if (updateErrorCount % 10 === 0) localStorage.setItem('hash', '');
+      updateErrorCount += 1;
       return { status: 'error', error: error.message };
     }
     return { status: 'error' };
