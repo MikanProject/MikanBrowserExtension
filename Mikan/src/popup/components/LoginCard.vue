@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { Vue, Options } from 'vue-class-component';
-import { sendMessage } from 'webext-bridge/content-script';
+import { sendMessage } from 'webext-bridge';
 import Button from './Button.vue';
 
 @Options({

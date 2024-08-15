@@ -1,5 +1,5 @@
 import browser from 'webextension-polyfill';
-import { onMessage } from 'webext-bridge/background';
+import { onMessage } from 'webext-bridge';
 import { Episode } from '../types/episode';
 
 async function openWindow(targetUrl: string) {

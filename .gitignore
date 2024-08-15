@@ -5,3 +5,6 @@ dist
 manifest.json
 _index.js
 _ignore
+extension.crx
+extension.xpi
+key.pem
